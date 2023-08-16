@@ -4,3 +4,4 @@ node_modules
 *.lock
 data/*.json
 /resources
+build
