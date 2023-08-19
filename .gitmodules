@@ -1,3 +1,6 @@
 [submodule "themes/hugo-theme-nostyleplease"]
 	path = themes/hugo-theme-nostyleplease
 	url = https://github.com/Rhahi/hugo-theme-nostyleplease
+[submodule "rules"]
+	path = rules
+	url = https://github.com/rubenpieters/netrunner-comprehensive-rules.git
