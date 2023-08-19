@@ -1,4 +1,4 @@
-baseURL: 'https://netrunner.rhahi.com/'
+baseURL: 'https://studyguide.rhahi.com/'
 languageCode: 'en-us'
 title: 'Study Guide'
 theme: 'hugo-theme-nostyleplease'
