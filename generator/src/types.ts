@@ -1,6 +1,13 @@
 export interface Page {
-  title?: string;
+  title: string;
+  id?: string;
+  topics: Topic[];
   references?: Link[];
+}
+
+export interface Topic {
+  name?: string;
+  id?: string;
   sections: Section[];
 }
 
@@ -13,6 +20,7 @@ export interface Section {
 export interface Group {
   type: 'permanent' | 'visible' | 'hidden';
   name?: string;
+  style?: string;
   divisions: Division[];
 }
 
@@ -39,7 +47,7 @@ export interface TextData {
 
 export interface Detail {
   id?: string;
-  type: 'detail';
+  type: 'detail' | 'detail-open';
   summary: TextData;
   expanded: TextData[];
 }
@@ -48,12 +56,13 @@ export interface Interact {
   id?: string;
   type: 'interact';
   message?: TextData;
-  composition?: 'vertical' | 'horizontal';
+  composition?: 'center' | 'vertical' | 'horizontal';
   links?: Link[];
 }
 
 export interface Link {
-  id: string;
-  answer?: string;
+  id?: string;
   target?: string;
+  answer?: string;
+  action?: string;
 }
