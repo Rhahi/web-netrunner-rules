@@ -21,6 +21,23 @@ body {
   }
 }
 
+@media screen and (min-width: 26rem) {
+  // remove theme setting
+  .w {
+    padding: inherit;
+  }
+}
+
+@media screen and (min-width: 32rem) {
+  .w {
+    padding: {
+      top: 4rem;
+      right: 1rem;
+      left: 1rem;
+    }
+  }
+}
+
 hr {
   font-size: 2rem;
 }
