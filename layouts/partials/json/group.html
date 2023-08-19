@@ -1,0 +1,47 @@
+{{ range .groups }} <!-- range groups -->
+    {{ if eq .type "permanent"}}
+    <div class="group">{{ if .name }}<h3>{{ .name }}</h3>{{ end }}
+    {{ else }}
+    <details class="group" {{- if eq .type "visible" }}open{{ end }}><summary class="{{ .style }}">{{ .name }}</summary>
+    {{ end }}
+
+    {{ range $division := .divisions }} <!-- range divisions -->
+        <div class="{{ $division.type }}">
+            {{ range $area := $division.areas }} <!-- range areas-->
+            <div class="{{ $area.side }} area">
+                {{ range $rule := $area.rules }} <!-- range rules-->
+                <li class="ruleset" id='{{ replace $rule.id "#" "" }}'>
+
+                    {{ range $index, $entry := $rule.entry }} <!-- range entry-->
+                    <ul class="entry">
+                        {{ with $entry }}
+                            {{ if .type }} <!-- if .type -->
+
+                            {{ if (or (eq .type "detail") (eq .type "detail-open")) }}
+                                {{ partial "rule/detail" (dict "context" . "super" $rule "index" $index) }}
+                            {{ else if eq .type "interact" }}
+                                {{ partial "rule/interact" (dict "context" . "super" $rule "index" $index) }}
+                            {{ else }}
+                                <div style="background-color: gold; min-width: 10rem; min-height: 10rem;">This should not be visible</div>
+                            {{ end }}
+
+                            {{ else }}
+                                {{ partial "rule/plain" (dict "context" . "super" $rule "index" $index) }}
+                            {{ end }}
+                        {{ end }} <!-- with entry-->
+                    </ul>
+                    {{ end }} <!-- range entry-->
+
+                </li>
+                {{ end }} <!-- range rules-->
+            </div>
+            {{ end }}  <!-- range areas-->
+        </div>
+    {{ end }}  <!-- range divisions-->
+
+    {{ if ne .type "permanent" }}
+    </details>
+    {{ else }}
+    </div>
+    {{ end }}
+{{ end }} <!-- if group type -->

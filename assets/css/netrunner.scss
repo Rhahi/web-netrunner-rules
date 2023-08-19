@@ -1,0 +1,163 @@
+// .title[id]:not([id=""])::before {
+//   content: attr(id);
+//   padding: 0.15em;
+//   margin-right: 0.2em;
+//   color: #888;
+// }
+
+/*
+  scoping rules
+
+  topics: Topic[]
+  <section> sections: Section[]
+  <group> groups: Group[]
+  <division> divisions: Division[]
+  <block> areas: Area[]
+  <rule> rules: EntryGroup[]
+  <div.entry> entry: (TextData | Detail | Interact)[]
+
+*/
+
+.netrunner {
+  ul, li {
+    // clear list rules
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+section > details {
+  margin: 0;
+  > summary {
+    background-color: #444;
+    padding: 0.5em;
+    &:hover {
+      background-color: #555;
+    }
+  }
+}
+
+.area {
+  display: flex;
+  flex-direction: column;
+}
+
+.ruleset {
+  border-bottom: 0.2em solid rgba(255,255,255,0.1);
+
+  details {
+    summary {
+      &:hover {
+        cursor: pointer;
+        filter: brightness(100);
+      }
+
+
+    }
+    .id {
+      background-color: rgba(255,255,255,0.1);
+      padding: 0 0.15em;
+    }
+
+    margin: 0.5em;
+
+    p {
+      // paragraphs under details
+      margin: 0.5em 0.9em;
+      color: #999;
+    }
+  }
+
+  &:target, p:target {
+    color: #FFF;
+    .id {
+      color: #DDD;
+    }
+    details p {
+      color: #BBB;
+    }
+    a.link {
+      color: rgb(255, 237, 77)
+    }
+  }
+
+  .plain {
+    margin: 0.5em 0.9em;
+    .id {
+      background-color: rgba(255,255,255,0.1);
+      padding: 0 0.15em;
+    }
+  }
+}
+
+ul.entry {
+  width: 100%;
+
+  > .id {
+    // applies to ID of a rule that starts with simple paragraph.
+    background-color: rgba(255,255,255,0.1);
+    display: inline-block;
+    padding: 0 0.15em;
+    margin: 0.5em;
+  }
+
+  > p {
+    display: inline;
+  }
+}
+
+li.interact {
+  text-align: center;
+  background-color: rgba(255,255,255,0.1);
+  margin: 0;
+  padding: 0.6em;
+
+  .id {
+    // applies to ID of a rule that starts with an interaction.
+    background-color: rgba(255,255,255,0.1);
+    float: left;
+    padding: 0 0.15em;
+    margin-right: 1em;
+  }
+
+  .links {
+    text-align: left;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  span.id + span + .links {
+    margin-top: 0.5em;
+  }
+
+  .vertical {
+    background-color: rgba(255,255,255,0.1);
+    display: flex;
+    margin: 0 2em;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6em;
+    padding: 0.4em 0;
+    p, a {
+      margin: 0 0.8em;
+    }
+  }
+
+  .link {
+    text-decoration: none;
+    .target {
+      background-color: rgba(255,255,255,0.1);
+      padding: 0 0.3em;
+    }
+  }
+}

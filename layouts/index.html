@@ -1,0 +1,48 @@
+{{ define "main" }}
+
+<div class="card">
+    <hgroup>
+        <div class="cost">
+            <span>
+                rules version 23.8
+            </span>
+            <a href="https://rubenpieters.github.io/netrunner-comprehensive-rules/">
+                Full rules
+            </a>
+        </div>
+        <header>
+            <h1>{{ $.Site.Title }}</h1>
+            {{- if $.Site.Params.theme_config.show_description -}}
+            <p>{{ $.Site.Params.description }}</p>
+            {{- end -}}
+        </header>
+    </hgroup>
+
+    <div class="desc">
+        <p class="type">PROGRAM</p>
+
+        An unofficial interactive Netrunner rules guide, with focus on timing structure.
+
+        <nav>{{ partial "menu_item.html" (dict "context" . "collection" $.Site.Data.menu.entries) }}</nav>
+        <div class="flavor">
+            {{ .Content }}
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<p class="center">
+    Is there a page you would like to see? Let me know by
+    <a href="https://github.com/Rhahi/web-study-guide">writing an issue or contribute!</a>
+</p>
+
+<p class="center">
+    <span class="help">[link help]:</span>
+    <span class="help-link">fresh</span>,
+    <span class="help-visited">visited</span>,
+    <span class="help-link">external🔗</span>,
+    <span class="help-visited">..</span>(back to home)
+</p>
+
+{{ end }}

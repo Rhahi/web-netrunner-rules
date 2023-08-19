@@ -1,0 +1,9 @@
+{{ $super := .super }}
+{{ $index := .index }}
+{{ with .context }}
+    <li class="plain {{ .style }}">
+        {{ if .id }}{{ if ne .id $super.id }}<span class="id">{{ replace .id "#" "" }}</span>{{ end }}{{ end }}
+        {{ if $super.id }}{{ if eq $index 0 }}<span class="id">{{ replace $super.id "#" "" }}</span>{{ end }}{{ end }}
+        {{ .text | safeHTML }}
+    </li>
+{{ end }}

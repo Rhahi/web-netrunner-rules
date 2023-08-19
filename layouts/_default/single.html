@@ -1,0 +1,71 @@
+{{ define "main" }}
+{{ partial "back_link.html" .}}
+
+{{/*  https://www.joesacher.com/blog/2017/08/03/implementing-series-in-hugo/  */}}
+{{ if .Params.series }}
+    {{ $.Scratch.Set "cur_page_num" 1 }}
+    {{ $.Scratch.Set "total_page_num" 0 }}
+    {{ range where .Site.RegularPages.ByDate "Params.series" .Params.series }}
+        {{ $.Scratch.Add "total_page_num" 1 }}
+        {{ if gt $.Date.Unix .Date.Unix }}
+            {{ $.Scratch.Add "cur_page_num" 1 }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+{{/*  end reference  */}}
+
+<article>
+    {{/*  series header  */}}
+    <header>
+        {{ if .Params.series }}
+        <p><i>
+            Part {{ $.Scratch.Get "cur_page_num" }} of
+            {{ $.Scratch.Get "total_page_num" }} in the
+            <a href="/series/{{.Params.series | urlize}}">{{ .Params.series | title }}</a> series.</p>
+        </i><p>
+        {{ end }}
+
+        <p class="post-meta">
+            <time datetime="{{ .Date }}">
+                {{ .Date | time.Format site.Params.theme_config.date_format }}
+            </time>
+        </p>
+    </header>
+
+
+    {{ if .Params.Json }}
+        {{ partial "json/main" . }}
+    {{ else }}
+        <h1>{{ .Title | title }}</h1>
+        {{ .Content }}
+    {{ end }}
+    {{ if .Page.Store.Get "hasMermaid" }}
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        mermaid.initialize(
+            {
+                startOnLoad: true,
+                theme: "dark",
+            }
+        );
+    </script>
+    {{ end }}
+
+    {{ partial "backlinks.html" (dict "page" .) }}
+
+    {{/*  series footer  */}}
+    {{ if .Params.series }}
+        <hr class="dark"/>
+        <i>Other posts from [<a href="/series/{{.Params.series | urlize}}">{{.Params.series | title}}</a>] series:</i>
+        <ul>
+            {{ range where .Site.RegularPages.ByDate "Params.series" .Params.series }}
+            <li>
+                {{ .Date | time.Format "2006-01-02" }}
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                {{ if eq .RelPermalink $.RelPermalink }}&lt;-- You are here{{ end }}
+            </li>
+            {{ end }}
+        </ul>
+    {{ end }}
+</article>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ $super := .super }}
+{{ $index := .index }}
+{{ with .context }}
+
+{{ if (or (eq .type "detail") (eq .type "detail-open")) }} <!-- entry match -->
+<li>
+<details class="toggle-rule" {{ if eq .type "detail-open" }}open{{ end }}>
+    <summary class="rule-entry {{ .style }}" id='{{ replace .id "#" "" }}'>
+        {{ if $super.id }}{{ if eq $index 0 }}<span class="id">{{ replace $super.id "#" "" }}</span>{{ end }}{{ end }}
+        <span class="summary {{ .summary.style }}">{{ .summary.text | safeHTML }}</span>
+    </summary>
+    {{ range .expanded }}
+    <p class="{{ .style }}" id='{{ replace .id "#" "" }}'>
+        {{ if .id }}{{ if ne .id $super.id }}<span class="id">{{ replace .id "#" "" }}</span>{{ end }}{{ end }}
+        {{ .text | safeHTML }}
+    </p>
+    {{ end }}
+</details>
+</li>
+{{ end }}
+
+{{ end }}

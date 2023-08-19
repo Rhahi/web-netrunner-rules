@@ -1,0 +1,144 @@
+body {
+  font-size: 1.05rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.w {
+  max-width: 78rem;
+  min-width: 30rem;
+  margin: 0 auto;
+}
+
+.side-by-side {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media screen and (max-width: 55rem) {
+  .side-by-side {
+    grid-template-columns: unset;
+  }
+}
+
+hr {
+  font-size: 2rem;
+}
+
+h2, h4, h5, h6 {
+  &::before {
+    content: attr(id);
+    padding: 0.15em;
+    margin-right: 0.2em;
+    color: $neutral-4;
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  max-width: 25em;
+  text-align: center;
+  background-color: #4f6b06;
+  color: black;
+  margin: 1em auto;
+  padding: 0.3em;
+  font-size: 1.9rem;
+  &::before {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  &:target {
+    background-color: #87bc00;
+    box-shadow: 0 0 0.5em #87bc00;
+  }
+}
+
+h3 {
+  display: block;
+  background-color: $neutral-1;
+  margin: 2em 0 0 0;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: {
+    top: 0.5rem;
+    bottom: 0.5rem;
+  }
+
+  .title {
+    color: #CCC;
+  }
+
+  .id {
+    display: inline-block;
+    color: $neutral-3;
+    margin-right: 0.2em;
+  }
+
+  .toggle {
+    font-size: 0.9rem;
+    color: $neutral-4;
+    cursor: pointer;
+    font-family: monospace;
+    &:hover {
+      color: #AAA;
+    }
+  }
+
+  &:target {
+    .id {
+      color: #888;
+    }
+  }
+}
+
+.verbatim {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.question {
+  font-style: italic;
+}
+
+a.no-link-deco {
+  text-decoration: none;
+}
+
+img.icon {
+  height: 1em;
+  display: inline;
+  filter: invert(100);
+}
+
+.center {
+  text-align: center;
+}
+
+.runner {
+  background: $runner-background;
+}
+
+.corp {
+  background: $corp-background;
+}
+
+.neutral {
+  display: grid;
+  background: $neutral-background;
+
+  .area {
+    width: 70%;
+    margin: auto;
+  }
+
+  @media screen and (max-width: 55rem) {
+    .area {
+      width: 100%;
+    }
+  }
+}
+
+:target {
+  background: rgba(255,157,0,0.467);
+}

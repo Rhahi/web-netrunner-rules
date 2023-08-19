@@ -1,0 +1,46 @@
+{{ $super := .super }}
+{{ $index := .index }}
+
+{{ with .context }}
+<li class="interact" id='{{ replace .id "#" "" }}'>
+    {{ if $super.id }}{{ if eq $index 0 }}
+    <span class="id">{{ replace $super.id "#" "" }}</span>
+    {{ end }}{{ end }}
+
+    {{ if .message }}
+    {{ if .id }}{{ if ne .id $super.id }}<span class="id">{{ replace .id "#" "" }}</span>{{ end }}{{ end }}
+    <span class="question {{ .message.style }}">{{ .message.text | safeHTML }}</span>
+    {{ end }}
+
+    {{ if .links }}
+        <div class='links {{ default "default" .composition }}'>
+            {{ range .links }} <!-- range links -->
+                {{ if .target }}
+                <a
+                    class="link"
+                    href='{{ if strings.HasPrefix .target "#" }}{{ .target }}{{ else }}{{ absURL .target }}{{ end }}' {{ if .id }}{{ if ne .id $super.id }}
+                    id='{{ replace .id "#" "" }}'{{ end }}{{ end }}
+                >
+                {{ else }}
+                <p {{ if .id }}{{ if ne .id $super.id }}id='{{ replace .id "#" "" }}'{{ end }}{{ end }}>
+                {{ end }}
+
+                {{ if .id }}
+                <span class="id">{{ replace .id "#" "" }}</span>
+                {{ end }}
+
+                {{ .answer }}
+                <i class="fa-solid fa-arrow-right-long"></i>
+                {{ .action }}
+
+                {{ if .target }}
+                {{ if strings.HasPrefix .target "#" }}<span class="target">{{ .target }}</span>{{ end }}
+                </a>
+                {{ else }}
+                </p>
+                {{ end }}
+            {{ end }} <!-- range links -->
+        </div>
+    {{ end }}
+</li>
+{{ end }}

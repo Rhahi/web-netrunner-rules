@@ -1,0 +1,52 @@
+<script>
+    let toggleButtons = document.querySelectorAll('a.toggle');
+    toggleButtons.forEach(function(toggleButton) {
+        toggleButton.innerHTML = "[show]";
+    });
+
+    document.addEventListener('click', function(event) {
+        if (event.target.id && event.target.id.startsWith('toggle-')) {
+            let sectionElement = event.target.closest('section');
+            let detailsElements = sectionElement.querySelectorAll('details.toggle-rule');
+            let revealContent = event.target.innerHTML === '[show]';
+
+            detailsElements.forEach(function(detailsElement) {
+                if (detailsElement.hasAttribute('open')) {
+                    if (!revealContent) {
+                        detailsElement.removeAttribute('open');
+                    }
+                } else {
+                    if (revealContent) {
+                        detailsElement.setAttribute('open', '');
+                    }
+                }
+            });
+            if (revealContent) {
+                event.target.innerHTML = '[hide]';
+            } else {
+                event.target.innerHTML = '[show]';
+            }
+        }
+    });
+
+    function openDetailsIfHashMatches() {
+        const id = window.location.hash;
+        if (!id) {
+            return;
+        }
+        const element = document.getElementById(id.replace('#', ''))
+        if (element) {
+            let parent = element.parentElement;
+            while (parent) {
+                if (parent.tagName.toLowerCase() === 'details') {
+                    parent.open = true;
+                }
+                parent = parent.parentElement;
+            }
+        }
+        console.log('failed to open hash');
+    }
+
+    window.addEventListener('hashchange', openDetailsIfHashMatches);
+    window.addEventListener('DOMContentLoaded', openDetailsIfHashMatches);
+</script>

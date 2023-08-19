@@ -1,0 +1,37 @@
+{{ $json := index .Site.Data .Params.Json }}
+
+<!-- title -->
+<h1>{{ $json.title | title }}</h1>
+
+<!-- topics -->
+{{ range $index, $topic := $json.topics }} <!-- range topics -->
+    {{ if $topic.name }}
+        {{ if $topic.id }}
+        <a class="no-link-deco" href="{{ $topic.id }}">
+            <h2 id='{{ replace $topic.id "#" "" }}'>{{ $topic.name }}</h2>
+        </a>
+        {{ else }}
+        <h2 id="{{ $topic.id }}">
+            {{ $topic.name }}
+        </h2>
+        {{ end }}
+    {{ end }}
+
+    <!-- section -->
+    {{ range $topic.sections }} <!-- range sections-->
+        <section class="netrunner" {{ if .id }}id="section-{{ .id }}"{{ end }}>
+            <h3 id='{{ replace .id "#" "" }}'>
+                {{ if .id }}<span class="id">{{ replace .id "#" "" }}</span>{{ end }}
+                <span class="title">{{ .name }}</span>
+                <a class="toggle" id="toggle-{{ .id }}">[script unavailable]</a>
+            </h3>
+
+            <!-- group -->
+            {{ partial "json/group" . }}
+
+        </section>
+    {{ end }} <!-- range sections-->
+    <hr class="dark" />
+{{ end }} <!-- range topics -->
+
+{{ partial "json/script" }}
