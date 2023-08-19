@@ -2,3 +2,5 @@ baseURL: 'https://netrunner.rhahi.com/'
 languageCode: 'en-us'
 title: 'Study Guide'
 theme: 'hugo-theme-nostyleplease'
+params:
+  description: "An unofficial interactive Netrunner rules guide, with focus on timing structure."
