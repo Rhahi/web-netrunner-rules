@@ -7,6 +7,10 @@ body {
   max-width: 78rem;
   min-width: 30rem;
   margin: 0 auto;
+
+  > a {
+    font-size: 2rem;
+  }
 }
 
 .side-by-side {
