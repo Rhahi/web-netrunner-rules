@@ -1,0 +1,4 @@
+baseURL: 'https://netrunner.rhahi.com/'
+languageCode: 'en-us'
+title: 'Study Guide'
+theme: 'hugo-theme-nostyleplease'

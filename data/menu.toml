@@ -1,0 +1,6 @@
+[[entries]]
+title = "pages"
+
+  [entries.post_list]
+  limit = 5
+  show_more = true
