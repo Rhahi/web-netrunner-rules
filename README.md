@@ -5,8 +5,8 @@ by using hyperlinks, simplified phrases, and color-coded responsive layouts.
 
 ## How to build
 
-1. download golang and build Hugo.
-1. download npm and install ./generator `npm i`
+1. download golang and build [Hugo](https://gohugo.io/installation/linux/).
+1. download npm and install ./generator `npm i`. Do this while in ./generator.
 1. build data by using `npm run build`. Do this while in ./generator.
 1. build website using `hugo`.
 1. the website should now be available in `./public`.
