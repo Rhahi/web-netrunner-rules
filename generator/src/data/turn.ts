@@ -1,9 +1,9 @@
 import {Page, Topic} from '../types';
-import {corpDraw} from './corpTurn/draw';
-import {corpAction} from './corpTurn/action';
-import {corpDiscard} from './corpTurn/discard';
-import {runnerAction} from './runnerTurn/action';
-import {runnerDiscard} from './runnerTurn/discard';
+import {corpDraw} from './turn/corpDraw';
+import {corpAction} from './turn/corpAction';
+import {corpDiscard} from './turn/corpDiscard';
+import {runnerAction} from './turn/runnerAction';
+import {runnerDiscard} from './turn/runnerDiscard';
 
 const corp: Topic = {
   name: "Steps of the Corp's Turn",
