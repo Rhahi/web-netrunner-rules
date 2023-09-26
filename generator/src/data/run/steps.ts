@@ -115,7 +115,7 @@ const area692_b: Area = {
     {
       entry: [
         plain("Corp's paid ability window (P) (R)"),
-        plain(boiler.PR_corp),
+        plain(boiler.PRI_corp),
         {
           type: 'interact',
           message: textc({

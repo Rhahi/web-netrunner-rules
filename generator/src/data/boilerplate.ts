@@ -9,6 +9,8 @@ export const runnerBackToCorp =
 export const PRS_corp = 'Use paid abilities, rez non-ice cards, or score.';
 export const PR_corp =
   'Corp can use paid abilities, rez non-ice cards, but cannot score.';
+export const PRI_corp =
+  'Corp can use paid abilities, rez ice being approached, rez non-ice cards, but cannot score.';
 export const P_corp = 'Only use paid abilities.';
 export const P_plain_runner = 'Runner’s paid ability window (P)';
 export const P_plain_corp = 'Corp’s paid ability window (P)';
