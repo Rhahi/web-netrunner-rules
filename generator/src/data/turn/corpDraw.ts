@@ -120,12 +120,12 @@ const area561_ex1: Area = {
     {
       entry: [
         textc({
-          text: 'Assets with start of turn trigger, such as Marilyn Campaign, can be rezzed during this paid ability window (5.6.1.b) to gain the start of turn income.',
+          text: 'Assets with start of turn trigger, such as  Anthill Excavation Contract, can be rezzed during this paid ability window (5.6.1.b) to gain the start of turn income.',
           links: [
             {
               find: 'Marilyn Campaign',
               replace: false,
-              link: 'https://netrunnerdb.com/en/card/31042',
+              link: 'https://netrunnerdb.com/en/card/35072',
             },
             {
               find: '(5.6.1.b)',
@@ -164,7 +164,7 @@ export const corpDraw: Section = {
     },
     {
       type: 'hidden',
-      name: 'When is the last time I can rez Marilyn Campaign to get its effect?',
+      name: 'When is the last time I can rez Anthill Excavation Contract to get its effect?',
       divisions: [balanceAreas([area561_ex1])],
     },
   ],

@@ -25,7 +25,7 @@ const area75: Area = {
           links: [
             {
               id: '#7.5.2',
-              answer: 'Archive',
+              answer: 'Archives',
               action: 'Turn all cards in the Corp’s discard pile faceup.',
             },
             {
@@ -45,11 +45,14 @@ const area75: Area = {
           expanded: [
             textc({
               id: '#7.4.1.a',
-              text: 'At the beginning of a breach, each card in the root of the breached server is a candidate'
+              text: 'At the beginning of a breach, each card in the root of the breached server is a candidate',
             }),
             verbatim('#7.3.5.b'),
-            verbatim('#7.4.6'),
-          ]
+            textc({
+              id: '#7.4.6.a',
+              text: 'If a card enters the root of a server during a breach of that server, the Runner decides whether that card becomes a candidate',
+            }),
+          ],
         },
         {
           type: 'detail',
@@ -57,10 +60,11 @@ const area75: Area = {
           expanded: [
             textc({
               id: '#7.4.1.a',
-              text: 'At the beginning of a breach, each card in the Corp’s hand is a candidate'
+              text: 'At the beginning of a breach, each card in the Corp’s hand is a candidate',
             }),
             verbatim('#7.3.4.a'),
-          ]
+            verbatim('#7.4.6.b'),
+          ],
         },
         {
           type: 'detail',
@@ -68,10 +72,11 @@ const area75: Area = {
           expanded: [
             textc({
               id: '#7.4.1.a',
-              text: 'At the beginning of a breach, the top card of the Corp’s deck is a candidate.'
+              text: 'At the beginning of a breach, the top card of the Corp’s deck is a candidate.',
             }),
             verbatim('#7.4.7'),
-          ]
+            verbatim('#7.4.7.a'),
+          ],
         },
         {
           type: 'detail',
@@ -79,12 +84,12 @@ const area75: Area = {
           expanded: [
             textc({
               id: '#7.4.1.a',
-              text: 'At the beginning of a breach, each card in the Corp’s discard pile is a candidate.'
+              text: 'At the beginning of a breach, each card in the Corp’s discard pile is a candidate.',
             }),
             verbatim('#7.3.2.a'),
-          ]
+          ],
         },
-      ]
+      ],
     },
     {
       id: '#7.5.4',
@@ -128,9 +133,7 @@ export const breach: Section = {
   groups: [
     {
       type: 'permanent',
-      divisions: [
-        balanceAreas([area75]),
-      ],
+      divisions: [balanceAreas([area75])],
     },
   ],
 };

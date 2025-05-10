@@ -13,7 +13,7 @@ const prev_b: Area = {
   rules: [],
 };
 
-const area691: Area = {
+const area691_a: Area = {
   side: 'runner',
   rules: [
     {
@@ -53,12 +53,67 @@ const area691: Area = {
     {
       id: '#6.9.1.d',
       entry: [
-        plain('Initiation phase ends'),
+        {
+          type: 'detail',
+          summary: plain("Runner's position is set"),
+          expanded: [
+            plain(
+              'If there is an ice protecting this server, the runner is now positioned at this ice.'
+            ),
+            verbatim('#6.9.1.d'),
+          ],
+        },
+      ],
+    },
+    {
+      id: '#6.9.1.e',
+      entry: [
+        {
+          type: 'detail',
+          summary: plain("Runner's paid ability window (P) (R)"),
+          expanded: [verbatim('#6.9.1.e')],
+        },
         {
           type: 'interact',
-          message: plain(
-            'Does the attacked server have at least one piece of ice?'
-          ),
+          message: textc({
+            text: boiler.runnerPAWPass,
+            links: [{find: '#link', replace: true, link: '#6.9.1.f'}],
+          }),
+        },
+      ],
+    },
+  ],
+};
+
+const area691_b: Area = {
+  side: 'corp',
+  rules: [
+    {
+      entry: [
+        plain(boiler.PR_plain_corp),
+        plain(boiler.PR_corp),
+        {
+          type: 'interact',
+          message: textc({
+            text: boiler.corpBackToRunner,
+            links: [{find: '#link', replace: true, link: '#6.9.1.e'}],
+          }),
+        },
+      ],
+    },
+  ],
+};
+
+const area691_c: Area = {
+  side: 'runner',
+  rules: [
+    {
+      id: '#6.9.1.f',
+      entry: [
+        plain('Initiation phase is complete.'),
+        {
+          type: 'interact',
+          message: plain("Is there an ice at the runner's position?"),
           composition: 'vertical',
           links: [
             {answer: 'Yes', target: '#6.9.2'},
@@ -170,7 +225,7 @@ const area693_a: Area = {
             verbatim('#6.9.3.a'),
             textc({
               id: '#6.5.2',
-              text: '...Abilities with this trigger condition are subject to rule 9.2.8f.',
+              text: "Abilities with this trigger condition can be prevented by ending of the encounter phase. For example, bypassing ability with 'when encounter' can prevent corp ice's on encounter ability, as runner's effects have priority during runner turn.",
             }),
             verbatim('#9.2.8.f.ex1'),
           ],
@@ -527,7 +582,7 @@ export const initiation: Section = {
   groups: [
     {
       type: 'permanent',
-      divisions: [balanceAreas([area691])],
+      divisions: [balanceAreas([area691_a, area691_b, area691_c])],
     },
   ],
 };
