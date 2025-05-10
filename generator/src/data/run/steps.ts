@@ -582,7 +582,11 @@ export const initiation: Section = {
   groups: [
     {
       type: 'permanent',
-      divisions: [balanceAreas([area691_a, area691_b, area691_c])],
+      divisions: [
+        balanceAreas([area691_a]),
+        balanceAreas([area691_b]),
+        balanceAreas([area691_c]),
+      ],
     },
   ],
 };
